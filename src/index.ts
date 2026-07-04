@@ -1,5 +1,5 @@
 // At the TOP of src/index.ts
-import type { User, Course, StringOrNumber } from "../types/sample";
+import type { User, Course, Submission } from "../types/sample";
 
 // ===== PRIMITIVE TYPE ANNOTATIONS =====
 
@@ -61,7 +61,7 @@ console.log(course);
 
 // ===== TYPE NARROWING =====
 
-// import type { StringOrNumber } from "../types/sample";
+import type { StringOrNumber } from "../types/sample";
 
 // Narrowing with typeof
 // Without the if-check, TypeScript would error:

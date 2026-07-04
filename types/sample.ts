@@ -23,11 +23,15 @@ export interface Submission {
   courseCode: string;
   repoUrl: string;
   submittedAt: Date;
-  score?: number; // ? means this field is optional
+  score?: number;
 }
 
 export type StringOrNumber = string | number;
 
+// Function that accepts a union type
+export function printId(id: StringOrNumber): void {
+  console.log(`ID: ${id}`);
+}
 
 function getUser(id: number): User {
   return {
