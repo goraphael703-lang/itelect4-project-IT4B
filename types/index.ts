@@ -6,7 +6,7 @@ export interface User {
   email: string;
   role: "student" | "admin" | "instructor"; // only these values
   isActive: boolean;
-  score: number; // Added score property
+  score?: number; // Added score property
 }
 
 export interface Course {

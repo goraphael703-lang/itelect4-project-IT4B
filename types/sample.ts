@@ -26,6 +26,9 @@ export interface Submission {
   score?: number; // ? means this field is optional
 }
 
+export type StringOrNumber = string | number;
+
+
 function getUser(id: number): User {
   return {
     id: id,
