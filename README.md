@@ -1,42 +1,32 @@
-# itelect4-project-gt1
+# React + TypeScript + Vite
 
-## Project Concept
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-A general student management system built with TypeScript to practice type-safe application design. The system models core entities in a school setting -- users, courses, and submissions -- and demonstrates TypeScript features including interfaces, generics, utility types, and enums.
+Currently, two official plugins are available:
 
-## Types & Interfaces Defined So Far
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-**Interfaces**
-- User -- id, name, email, role ("student" | "admin" | "instructor"), isActive
-- Course -- code, title, units, semester
-- Submission -- id, studentId, courseCode, repoUrl, submittedAt, optional score
-- ApiResponse(T) -- generic wrapper (success, data: T, optional message)
+## React Compiler
 
-**Type Aliases**
-- ID -- number | string
-- Coordinate -- { x: number; y: number }
-- Formatter -- (value: number) => string
-- StringOrNumber -- string | number
-- Status -- "pending" | "active" | "inactive"
-- StudentWithCourse -- intersection of User and course enrollment fields
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-**Utility Types**
-- UserUpdate -- Partial<User>
-- UserPreview -- Pick<User, "id" | "name" | "role">
-- PublicUser -- Omit<User, "email" | "isActive">
-- RoleCount -- Record<"student" | "admin" | "instructor", number>
+## Expanding the Oxlint configuration
 
-**Enums**
-- SubmissionStatus -- regular enum (Pending, Graded, Late)
-- Role -- const enum (Student, Admin, Instructor)
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
 
-## How to Install and Run
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
+```
 
-1. Install dependencies
-   npm install
-
-2. Run the project directly with ts-node
-   npx ts-node src/index.ts
-
-3. (Optional) Type-check without running
-   npx tsc --noEmit
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
