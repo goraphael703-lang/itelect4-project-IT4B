@@ -37,7 +37,7 @@ export type Coordinate = {
 export type Formatter = (value: number) => string;
 // Using them
 const studentId: ID = "S2026-001";
-const position: Coordinate = { x: 10, y: 20 };
+// const position: Coordinate = { x: 10, y: 20 };
 const formatScore: Formatter = (value) => `${value}%`;
 console.log(studentId); // S2026-001
 console.log(formatScore(95.5)); // 95.5%
@@ -59,20 +59,20 @@ export type StudentWithCourse = User & {
   enrolledCourse: Course;
   gpa: number;
 };
-const topStudent: StudentWithCourse = {
-  id: 1,
-  name: "Maria Santos",
-  email: "m@example.com",
-  role: "student",
-  isActive: true,
-  enrolledCourse: {
-    code: "ITELECT4",
-    title: "IT Elective 4",
-    units: 3,
-    semester: "1st",
-  },
-  gpa: 1.25,
-};
+// const topStudent: StudentWithCourse = {
+//   id: 1,
+//   name: "Maria Santos",
+//   email: "m@example.com",
+//   role: "student",
+//   isActive: true,
+//   enrolledCourse: {
+//     code: "ITELECT4",
+//     title: "IT Elective 4",
+//     units: 3,
+//     semester: "1st",
+//   },
+//   gpa: 1.25,
+// };
 
 // ===== GENERIC INTERFACE =====
 // ApiResponse<T> can wrap ANY data type -- every future GT reuses this

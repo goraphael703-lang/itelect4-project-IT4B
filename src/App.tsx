@@ -4,7 +4,7 @@ import CourseCard from "./components/CourseCard";
 import SubmissionBadge from "./components/SubmissionBadge";
 import type { User, Course, Submission } from "./types/index";
 const student: User = {
-id: 1, name: "Juan dela Cruz", email: "juan@example.com",
+id: 1, name: "Raphael Lorenzo B. Go", email: "raph@example.com",
 role: "student", isActive: true,
 };
 const course: Course = {
