@@ -1,7 +1,7 @@
 // src/components/SubmissionBadge.tsx
-import type { Submission } from "../types/index";
+import type { ApiSubmission } from "../types/index";
 interface SubmissionBadgeProps {
-  submission: Submission;
+  submission: ApiSubmission;
   children?: React.ReactNode;
 }
 const SubmissionBadge: React.FC<SubmissionBadgeProps> = ({
@@ -22,3 +22,8 @@ const SubmissionBadge: React.FC<SubmissionBadgeProps> = ({
   );
 };
 export default SubmissionBadge;
+
+// Why this is not a hack: the data on this page came out of an HTTP
+// response, so the prop type should say so. Left as Submission, it
+// would be describing a Date that is really a string and a number
+// that is really a string -- both wrong, and both completely silent.

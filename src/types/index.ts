@@ -90,21 +90,31 @@ export type UserPreview = Pick<User, "id" | "name" | "role">;
 // Omit<T, K> -- keep every field EXCEPT the listed ones
 export type PublicUser = Omit<User, "email" | "isActive">;
 // Record<K, T> -- a fixed set of keys, each mapped to the same value type
-export type RoleCount = Record<
-"student" | "admin" | "instructor",
-number
->;
+export type RoleCount = Record<"student" | "admin" | "instructor", number>;
 
 // ===== ENUMS =====
 // Regular enum -- exists at runtime; can be looped over or reverse-mapped
 export enum SubmissionStatus {
-Pending,
-Graded,
-Late,
+  Pending,
+  Graded,
+  Late,
 }
 // const enum -- inlined at compile time, zero runtime overhead
 export const enum Role {
-Student = "student",
-Admin = "admin",
-Instructor = "instructor",
+  Student = "student",
+  Admin = "admin",
+  Instructor = "instructor",
 }
+
+// JSON has no Date, and json-server writes ids as strings. So what the
+// API hands back is NOT the Submission shape you declared in Session 1.
+// Both types below are DERIVED from it, so Submission stays the single
+// source of truth -- add a field there and these two inherit it.
+
+// Omit is from Session 2. The & intersection is from Session 1.
+export type ApiSubmission = Omit<Submission, "id" | "submittedAt"> & {
+  id: string; // json-server ids look like "z4U3v8og06g"
+  submittedAt: string; // an ISO string, never a Date object
+};
+// What we SEND when creating one. No id yet -- the server makes it.
+export type NewSubmission = Omit<ApiSubmission, "id">;
