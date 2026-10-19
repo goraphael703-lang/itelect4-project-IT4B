@@ -4,8 +4,8 @@ import type { Course } from "../types/index";
 import CourseCard from "../components/CourseCard";
 import usePrevious from "../hooks/usePrevious";
 import useUiStore from "../store/uiStore";
-import { fetchCourses } from "../api/client";
 import { Input } from "@/components/ui/input"; // <-- NEW
+import { fetchCourses, API_URL } from "../api/client";
 
 function CoursesPage() {
   const { data, isPending, isError, error } = useQuery<Course[]>({
@@ -20,12 +20,19 @@ function CoursesPage() {
   if (isPending) {
     return <div className="animate-pulse p-6">Loading courses...</div>;
   }
+  
   if (isError) {
+
     return (
+
       <div className="rounded-lg bg-red-50 p-4 text-red-700">
-        {error.message} -- is json-server running on port 3001?
+
+        {error.message} -- tried {API_URL}/api/courses
+
       </div>
+
     );
+
   }
   const filteredCourses = data.filter(
     (c) =>

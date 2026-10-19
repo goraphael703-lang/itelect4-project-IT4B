@@ -52,14 +52,11 @@ function SubmissionsPage() {
   });
 
   // handleSubmit only calls this after the schema passes.
-  const onSubmit = (values: SubmissionFormValues): void => {
-    addSubmission.mutate({
-      studentId: 1,
-      courseCode: values.courseCode,
-      repoUrl: values.repoUrl,
-      submittedAt: new Date().toISOString(), // a STRING, not a Date
-    });
-  };
+ const onSubmit = (values: SubmissionFormValues): void => {
+
+  addSubmission.mutate(values);
+
+};
 
   // ... the isPending and isError guards are UNCHANGED from Session 7 ...
   if (isPending) {
