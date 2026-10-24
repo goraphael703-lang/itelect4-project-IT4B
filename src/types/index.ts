@@ -143,3 +143,16 @@ export interface AuthReply {
   user:  ApiUser;
 
 }
+
+export type NewSubmissionBody = Pick<Submission, "courseCode" | "repoUrl">
+
+export interface AiReview {
+
+  summary:      string;
+
+  strengths:    string[];
+
+  improvements: string[];
+
+  readiness:    "ready" | "almost" | "not-yet";
+}

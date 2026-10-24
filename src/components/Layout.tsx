@@ -36,6 +36,9 @@ function Layout() {
           <NavLink to="/submissions" className={linkClass}>
             Submissions
           </NavLink>
+          {/* Session 11: the one page that talks to Gemini */}
+
+          <NavLink to="/review" className={linkClass}>AI Review</NavLink>
           
 {userName === null ? (
 

@@ -58,6 +58,8 @@ import type {
 
   ApiUser,
 
+  AiReview,
+
 } from "../types/index";
 
 import useAuthStore from "../store/authStore";
@@ -257,6 +259,18 @@ export function loginUser(body: {
     method: "POST",
 
     body: JSON.stringify(body),
+
+  });
+
+}
+
+export function askAi(prompt: string): Promise<AiReview> {
+
+  return request<AiReview>("/api/ai", {
+
+    method: "POST",
+
+    body: JSON.stringify({ prompt }),
 
   });
 
